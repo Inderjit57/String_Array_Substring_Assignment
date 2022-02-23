@@ -5,8 +5,9 @@
 
 package Question1StringArray;
 
+import java.util.Scanner;
 public class City {
-	public String[] cityName = { "Toronto", "Mississauga", "Brampton", "Timins" };
+	public String[] cityName = { "Toronto", "Mississauga", "Brampton", "Timins, Ottawa, ThunderBay" };
 
 	public String setCity(String city) {
 		for (int i = 0; i < city.length(); i++) {
@@ -18,19 +19,32 @@ public class City {
 		}
 		return "City not found in the list";
 	}
+	
+	public void replaceCityIndex(){
+	    for (int i = 0; i < cityName.length; i++) {
+			if (cityName[i].startsWith("T")) {
+			    System.out.println("\nReplacing City name starting with T");
+				System.out.println(cityName[i].replace(cityName[i], "Mississauga"));
+				break;
+			}
+			else{
+			    System.out.println("City name  doesn't start with T");
+			    break;
+			}
+		}
+	  
+	}
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
+		Scanner sc = new Scanner(System.in);
+		
 		City city = new City();
-
-		city.setCity("Toronto");
-
-		for (int i = 0; i < city.cityName.length; i++) {
-			if (city.cityName[i].startsWith("T")) {
-				System.out.println(city.cityName[i].replace(city.cityName[i], "Mississauga"));
-
-			}
-		}
-
+        System.out.println("Enter city name");
+        String newCity = sc.next();
+		city.setCity(newCity);
+		
+        city.replaceCityIndex();
+        
 	}
 }
